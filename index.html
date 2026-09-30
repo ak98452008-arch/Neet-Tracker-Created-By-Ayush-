@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b12">
+<meta name="description" content="Ayush9845 — Midnight NEET 2027 Tracker">
+<title>AYUSH9845 • Midnight NEET Tracker</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23090b12'/%3E%3Ctext x='50' y='64' text-anchor='middle' font-size='48' fill='%237cf7c0'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="noise"></div>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">A</div>
+    <div><div class="brand-name">@Ayush9845</div><div class="brand-sub">MIDNIGHT NEET TRACKER</div></div>
+  </div>
+  <nav>
+    <button class="nav active" data-tab="dashboard">Dashboard</button>
+    <button class="nav" data-tab="planner">Planner</button>
+    <button class="nav" data-tab="syllabus">Syllabus</button>
+    <button class="nav" data-tab="tests">Tests</button>
+    <button class="nav" data-tab="analytics">Analytics</button>
+  </nav>
+  <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">PRIVATE BY DESIGN · DATA STAYS IN THIS BROWSER CREATED WITH ❤️ BY AYUSH KUMAR</div>
+      <h1>NEET 2027<br><span>Command Center.</span></h1>
+      <p>One focused workspace for your syllabus, study hours, mocks, habits and daily execution.</p>
+    </div>
+    <div class="hero-card">
+      <div class="tiny">TARGET EXAM</div>
+      <div class="exam-date">02 MAY 2027</div>
+
+  <section id="dashboard" class="tab-panel">
+    <div class="grid two">
+      <article class="card">
+        <div class="card-head"><div><span class="kicker">TODAY</span><h2>Daily Check-in</h2></div><span class="pill green" id="streakPill">0 day streak</span></div>
+        <div class="stat-row">
+          <div class="big-stat"><strong id="todayHours">0.0</strong><span>study hours</span></div>
+          <div class="big-stat"><strong id="todayTasks">0</strong><span>tasks done</span></div>
+          <div class="big-stat"><strong id="todayFocus">0</strong><span>focus mins</span></div>
+        </div>
+        <div class="progress"><span id="todayProgress"></span></div>
+        <div class="row gap"><input id="focusMinutes" type="number" min="1" value="60" placeholder="minutes"><button class="primary" id="addStudy">+ Log study</button></div>
+      </article>
+
+      <article class="card">
+        <div class="card-head"><div><span class="kicker">GOAL</span><h2>Dream College</h2></div><span class="pill">NEET 2027</span></div>
+        <div class="goal-name" id="collegeName">AIIMS New Delhi</div>
+        <div class="goal-score"><strong id="targetScore">710</strong><span>/ 720 target</span></div>
+        <div class="progress"><span id="scoreProgress"></span></div>
+        <div class="row gap"><input id="bestScore" type="number" min="0" max="720" value="0"><button class="secondary" id="saveScore">Save best score</button></div>
+      </article>
+    </div>
+
+    <div class="grid three">
+      <article class="card mini"><span class="kicker">PHYSICS</span><strong id="pProg">0%</strong><div class="progress"><span id="pBar"></span></div><small>Chapter progress</small></article>
+      <article class="card mini"><span class="kicker">CHEMISTRY</span><strong id="cProg">0%</strong><div class="progress"><span id="cBar"></span></div><small>Chapter progress</small></article>
+      <article class="card mini"><span class="kicker">BIOLOGY</span><strong id="bProg">0%</strong><div class="progress"><span id="bBar"></span></div><small>Chapter progress</small></article>
+    </div>
+
+    <article class="card">
+      <div class="card-head"><div><span class="kicker">FOCUS</span><h2>Quick actions</h2></div></div>
+      <div class="quick-grid">
+        <button class="quick" data-go="planner"><span>＋</span><b>Add today's task</b><small>Plan the next thing</small></button>
+        <button class="quick" data-go="syllabus"><span>◉</span><b>Update syllabus</b><small>Mark chapters complete</small></button>
+        <button class="quick" data-go="tests"><span>↗</span><b>Log a mock</b><small>Track score & accuracy</small></button>
+        <button class="quick" id="pomodoro"><span>◷</span><b>Focus timer</b><small>25-minute sprint</small></button>
+      </div>
+    </article>
+  </section>
+
+  <section id="planner" class="tab-panel hidden">
+    <article class="card">
+      <div class="card-head"><div><span class="kicker">EXECUTION</span><h2>Today's Planner</h2></div><span class="pill green" id="taskCount">0 tasks</span></div>
+      <div class="row gap add-task">
+        <select id="taskSubject"><option>Physics</option><option>Chemistry</option><option>Biology</option></select>
+        <input id="taskText" placeholder="e.g. Rotational Motion PYQs">
+        <input id="taskMins" type="number" min="5" value="60" placeholder="min">
+        <button class="primary" id="addTask">Add task</button>
+      </div>
+      <div id="tasks"></div>
+    </article>
+  </section>
+
+  <section id="syllabus" class="tab-panel hidden">
+    <article class="card">
+      <div class="card-head"><div><span class="kicker">NCERT TRACKER</span><h2>Syllabus Progress</h2></div><span class="pill" id="overallProg">0%</span></div>
+      <div class="tabs-mini">
+        <button class="mini-tab active" data-sub="Physics">Physics</button>
+        <button class="mini-tab" data-sub="Chemistry">Chemistry</button>
+        <button class="mini-tab" data-sub="Biology">Biology</button>
+      </div>
+      <div id="chapters"></div>
+    </article>
+  </section>
+
+  <section id="tests" class="tab-panel hidden">
+    <article class="card">
+      <div class="card-head"><div><span class="kicker">MOCKS</span><h2>Test Tracker</h2></div></div>
+      <div class="row gap">
+        <input id="testName" placeholder="Test name">
+        <input id="testScore" type="number" min="0" max="720" placeholder="Score">
+        <input id="testDate" type="date">
+        <button class="primary" id="addTest">Log test</button>
+      </div>
+      <div id="testsList"></div>
+    </article>
+  </section>
+
+  <section id="analytics" class="tab-panel hidden">
+    <div class="grid two">
+      <article class="card">
+        <div class="card-head"><div><span class="kicker">LAST 7 DAYS</span><h2>Study Hours</h2></div></div>
+        <div class="bars" id="bars"></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><div><span class="kicker">MOCKS</span><h2>Score Trend</h2></div></div>
+        <div class="score-list" id="scoreTrend"></div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>Built for <b>@Ayush9845</b> · NEET 2027 · Private by design</footer>
+
+<div class="modal hidden" id="settings">
+  <div class="modal-box">
+    <div class="card-head"><h2>Settings</h2><button class="icon-btn" id="closeSettings">×</button></div>
+    <label>Username<input id="usernameInput" value="@Ayush9845"></label>
+    <label>Dream college<input id="collegeInput" value="AIIMS New Delhi"></label>
+    <label>Target score<input id="targetInput" type="number" value="710"></label>
+    <button class="primary full" id="saveSettings">Save settings</button>
+    <button class="danger full" id="resetData">Reset all local data</button>
+  </div>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
